@@ -32,6 +32,9 @@ class Keg:
     def __eq__(self, other):
         return self.value == other.value
 
+    def __ne__(self, other):
+        return self.value != other.value
+
     def __str__(self):
         if self.value is None:
             return Keg.placeholder
@@ -70,6 +73,12 @@ class Card:
     def __contains__(self, keg: Keg):
         return keg in self.data
 
+    def __eq__(self, other):
+        return self.data == other.data
+
+    def __ne__(self, other):
+        return self.data != other.data
+
     def __str__(self):
         separator = '|'
         col_width = len(str(self.num_kegs))
@@ -101,6 +110,15 @@ class Player:
         self.name = name
         self.card = card
 
+    def __str__(self):
+        return self.name
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __ne__(self, other):
+        return self.name != other.name
+
     def cross_out(self, keg: Keg) -> bool:
         if keg in self.card:
             self.card.cross_out(keg)
@@ -130,6 +148,19 @@ class Game:
         self.players = []
         self.naum_kegs = naum_kegs
         self.kegs = []
+
+    def __str__(self):
+        s = f'Kegs {self.naum_kegs}\n'
+        s += 'Players:\n'
+        for pl in self.players:
+            s += str(pl) + '\n'
+        return s
+
+    def __eq__(self, other):
+        return self.naum_kegs == other.naum_kegs
+
+    def __ne__(self, other):
+        return self.naum_kegs != other.naum_kegs
 
     def add_player(self, player: Player):
         self.players.append(player)
