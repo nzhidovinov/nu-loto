@@ -15,3 +15,5 @@ def test_keg():
     assert keg.is_crossed is False
     keg.cross_out()
     assert keg.is_crossed is True
+    assert keg == loto.Keg(10)
+    assert keg != loto.Keg(1)
