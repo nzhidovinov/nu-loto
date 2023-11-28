@@ -166,8 +166,6 @@ class Game:
             print(f'Ходит игрок {player.name}')
             print('Карточка игрока:')
             print(player.card)
-            print(player.card.is_crossed())
-            print(player.card.crossed_nums)
             print()
             res = player.cross_out(keg)
             if not res:
